@@ -1,16 +1,13 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function Landing() {
+    const navigation = useNavigate();
+
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
-            <h1 className="text-5xl font-bold mb-6">Bienvenido a JugandoAndo</h1>
-            <p className="text-xl mb-4">Tu puerta de entrada a juegos de mesa</p>
-            <Link to="/login" className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md">
-                Iniciar sesión
-            </Link>
-            <Link to="/register" className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md">
-                Registrarse
-            </Link>
+        <div>
+            <button onClick={() => navigation("/feed")} className="btn btn-secondary cursor-pointer bg-amber-700 hover:bg-amber-900">
+                Estas en landing, click para ver productos
+            </button>
         </div>
     );
 }

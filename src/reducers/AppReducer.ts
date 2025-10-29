@@ -1,11 +1,5 @@
-import { combineReducers } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit"; // agrupar todas las pequeñas partes del estado global
 
-import MessageReducer from "./message/MessageReducer";
-import ThemeReducer from "./theme/ThemeReducer";
-
-const appReducer = combineReducers({
-    message: MessageReducer,
-    theme: ThemeReducer,
-});
+const appReducer = combineReducers({});
 export default appReducer;
 export type RootState = ReturnType<typeof appReducer>;
