@@ -1,0 +1,32 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
+import type { RootState } from "../../reducers/AppReducer";
+
+export default function Cart() {
+    const nav = useNavigate();
+    const productCart = useSelector((state: RootState) => state.CartReducer.cart);
+    return (
+        <div>
+            <h1>Mira tu carrito</h1>
+            <button onClick={() => nav("/feed")} className="btn btn-secondary bg-blue-800">
+                Ir a la tienda
+            </button>
+            <div>
+                {productCart.map((ProductIndividual) => (
+                    <div key={ProductIndividual.id} className="max-w-sm bg-white border border-blue-100 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 p-5 flex flex-col items-center text-center">
+                        <img src={ProductIndividual.image} alt={ProductIndividual.title} className="w-32 h-32 object-contain mb-4 rounded-xl bg-blue-50 p-3" />
+                        <h3 className="text-lg font-semibold text-blue-900 mb-1">{ProductIndividual.title}</h3>
+                        <p className="text-sm text-gray-500 mb-3 line-clamp-2">{ProductIndividual.description}</p>
+                        <p className="text-xl font-bold text-blue-600 mb-4">${ProductIndividual.price.toFixed(2)}</p>
+                        <div className="flex items-center gap-1 text-yellow-500 mb-2">
+                            <span className="text-sm text-gray-400">
+                                ⭐ {ProductIndividual.rating.rate} ({ProductIndividual.rating.count})
+                            </span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}

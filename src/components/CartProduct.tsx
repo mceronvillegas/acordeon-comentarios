@@ -1,5 +1,7 @@
 import type { ProductTypes } from "../types/ProductTypes";
 
+import BuyBtn from "./BuyBtn";
+
 type CardProductProps = {
     ProductIndividual: ProductTypes;
 };
@@ -16,7 +18,7 @@ function CartProduct({ ProductIndividual }: CardProductProps) {
                     ⭐ {ProductIndividual.rating.rate} ({ProductIndividual.rating.count})
                 </span>
             </div>
-            <button className="mt-auto bg-blue-200 text-blue-900 font-medium py-2 px-5 rounded-xl hover:bg-blue-300 transition-colors">Añadir al carrito</button>
+            <BuyBtn ProductIndividual={ProductIndividual} />
         </div>
     );
 }
